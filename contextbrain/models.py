@@ -19,6 +19,14 @@ class ElementType(Enum):
     MODULE = "module"
     COMMENT = "comment"
     DOCSTRING = "docstring"
+    # Markdown document elements
+    DOCUMENT_HEADING = "document_heading"
+    H1 = "h1"
+    H2 = "h2"
+    H3 = "h3"
+    H4 = "h4"
+    H5 = "h5"
+    H6 = "h6"
 
 
 class SourceLocation(BaseModel):

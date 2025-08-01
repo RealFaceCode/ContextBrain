@@ -9,6 +9,7 @@ from .base import LanguageParser
 from .python_parser import PythonParser
 from .javascript_parser import JavaScriptParser
 from .generic_parser import GenericParser
+from .markdown_parser import MarkdownParser
 
 # Registry of available parsers
 PARSER_REGISTRY = {
@@ -33,7 +34,7 @@ PARSER_REGISTRY = {
     'json': GenericParser,
     'yaml': GenericParser,
     'xml': GenericParser,
-    'markdown': GenericParser,
+    'markdown': MarkdownParser,
     'rst': GenericParser,
 }
 
@@ -65,9 +66,10 @@ def get_supported_languages() -> list[str]:
 
 __all__ = [
     "LanguageParser",
-    "PythonParser", 
+    "PythonParser",
     "JavaScriptParser",
     "GenericParser",
+    "MarkdownParser",
     "get_parser_for_language",
     "get_supported_languages",
 ]

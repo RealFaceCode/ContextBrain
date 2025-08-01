@@ -16,7 +16,6 @@ from ..models import (
     ElementType,
     SourceLocation,
     ElementMetadata,
-    Relationship,
 )
 
 logger = logging.getLogger(__name__)
@@ -74,7 +73,7 @@ class LanguageParser(ABC):
         location: SourceLocation,
         content: str,
         complexity: Optional[int] = None,
-        relationships: Optional[List[Relationship]] = None
+        relationships: Optional[List[str]] = None
     ) -> CodeElement:
         """
         Create a CodeElement with standard metadata.
@@ -203,28 +202,24 @@ class LanguageParser(ABC):
         
         return list(set(function_calls))  # Remove duplicates
     
-    def create_relationship(
+    def create_relationship_id(
         self,
         target_id: str,
         relationship_type: str,
         strength: float = 1.0
-    ) -> Relationship:
+    ) -> str:
         """
-        Create a relationship to another code element.
-        
+        Create a relationship identifier to another code element.
+
         Args:
             target_id: ID of the target element
             relationship_type: Type of relationship (calls, imports, extends, etc.)
             strength: Strength of the relationship (0.0-1.0)
-            
+
         Returns:
-            Relationship instance
+            Relationship identifier string
         """
-        return Relationship(
-            type=relationship_type,
-            target_id=target_id,
-            strength=strength,
-        )
+        return f"{relationship_type}:{target_id}:{strength}"
     
     def get_language_keywords(self) -> List[str]:
         """

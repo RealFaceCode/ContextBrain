@@ -14,7 +14,6 @@ from ..models import (
     CodeElement,
     ElementType,
     SourceLocation,
-    Relationship,
 )
 
 logger = logging.getLogger(__name__)
